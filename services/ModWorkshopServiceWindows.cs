@@ -172,6 +172,7 @@ internal class ModWorkshopServiceWindows : IPlatformSpecificModWorkshopService
 
     public async void FindSubscribedMods()
     {
+        subscribedModsQueue.Clear();
         var items = await GetSubscribedItems();
         foreach (var item in items)
         {

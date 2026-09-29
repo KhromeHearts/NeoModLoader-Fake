@@ -25,10 +25,38 @@ internal class WorkshopModListWindow : AbstractListWindow<WorkshopModListWindow,
 
     protected override void Init()
     {
+        GameObject refreshButton = new("RefreshButton", typeof(Image), typeof(Button), typeof(TipButton));
+        refreshButton.transform.SetParent(BackgroundTransform);
+        refreshButton.transform.localPosition = new Vector3(116, 0);
+        refreshButton.transform.localScale = Vector3.one;
+        refreshButton.GetComponent<RectTransform>().sizeDelta = new Vector2(20, 20);
+        refreshButton.GetComponent<Image>().sprite = InternalResourcesGetter.GetReloadIcon();
+        refreshButton.GetComponent<Button>().onClick.AddListener(RefreshWorkshopMods);
+        refreshButton.GetComponent<TipButton>().textOnClick = "WorkshopModsRefresh Title";
+
+        GameObject browseButton = new("BrowseButton", typeof(Image), typeof(Button), typeof(TipButton));
+        browseButton.transform.SetParent(BackgroundTransform);
+        browseButton.transform.localPosition = new Vector3(140, 0);
+        browseButton.transform.localScale = Vector3.one;
+        browseButton.GetComponent<RectTransform>().sizeDelta = new Vector2(20, 20);
+        browseButton.GetComponent<Image>().sprite = Resources.Load<Sprite>("ui/icons/iconCommunity");
+        browseButton.GetComponent<Button>().onClick.AddListener(() =>
+        {
+            Application.OpenURL("https://steamcommunity.com/workshop/browse/?appid=1206560&requiredtags[]=Mod");
+        });
+        browseButton.GetComponent<TipButton>().textOnClick = "WorkshopModsBrowse Title";
     }
 
     public override void OnNormalEnable()
     {
+        RefreshWorkshopMods();
+    }
+
+    private void RefreshWorkshopMods()
+    {
+        checkTimer = 0.015f;
+        showedMods.Clear();
+        ClearList();
         ModWorkshopService.steamWorkshopPromise.Then(ModWorkshopService.FindSubscribedMods).Catch(
             delegate(Exception err)
             {

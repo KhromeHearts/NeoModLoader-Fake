@@ -3,6 +3,8 @@
   "nml_mods_list_description": "Here are your mods.\nYou can enable, disable or configure your mods.",
   "NeoModList Title": "Mods",
   "WorkshopMods Title": "Workshop Subscribed Mods",
+  "WorkshopModsRefresh Title": "Refresh Workshop Mods",
+  "WorkshopModsBrowse Title": "Browse Workshop",
   "NeoModLoader Update Title": "NeoModLoader Update",
   "NeoModLoader Update Complete": "NeoModLoader has been updated to version {0}.\nPlease restart the game to apply the update.",
   "ModUpload Title": "Upload Mod",
