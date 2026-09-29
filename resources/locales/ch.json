@@ -3,6 +3,8 @@
   "nml_mods_list_description": "這裡是你的模組列表。\n你可以在這裡啟用,禁用和配置模組。",
   "NeoModList Title": "模組列表",
   "WorkshopMods Title": "創意工坊已訂閱模組",
+  "WorkshopModsRefresh Title": "重新整理創意工坊模組",
+  "WorkshopModsBrowse Title": "瀏覽創意工坊",
   "NeoModLoader Update Title": "NeoModLoader 更新",
   "NeoModLoader Update Complete": "NeoModLoader 更新至{0},\n 重啟遊戲以應用更新。",
   "ModUpload Title": "上傳模組",
